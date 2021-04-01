@@ -13,15 +13,17 @@ const petshop =  {
         fs.writeFileSync('bancoDados.JSON', petsAtualizado, 'utf-8');
     },
     listarPets : () => {
+        let textoListaPets = "petshop \n";
 
         bancoDados.pets.forEach((pet) => {
     
-            console.log(`${pet.nome}, ${pet.idade} anos, ${pet.tipo}, ${pet.raca}, ${(pet.vacinado) ? 'vacinado': 'não vacinado'}`);
+            textoListaPets += (`${pet.nome}, ${pet.idade} anos, ${pet.tipo}, ${pet.raca}, ${(pet.vacinado) ? 'vacinado': 'não vacinado'} \n`);
         
             pet.servicos.forEach((servico) => {
-                console.log(`${servico.data} - ${servico.nome}`);
+                textoListaPets += (`${servico.data} - ${servico.nome} \n`);
             })
         })
+        return textoListaPets;
     },
     vacinarPet : pet => {
         if (!pet.vacinado) {
@@ -29,7 +31,7 @@ const petshop =  {
             atualizarBanco();
             console.log(`${pet.nome} foi vacinado com sucesso!`);
         } else {
-            console.log(`Ops, ${pet.nome} já está vacinado!`);
+            console.log(`Ops, ${pet.nome} já está vacinado!`);  
         }
     },
     campanhaVacina : () => {
@@ -48,15 +50,15 @@ const petshop =  {
         });
         console.log(`${petVacinadosCampanha} pets foram vaciados nessa campanha!`);
     },
-    adicionarPet : (...novosPets) => {
-        novosPets.forEach((novoPet) => {
-            bancoDados.pets.push(novoPet);
-        })
-    
-        atualizarBanco();
-        novosPets.forEach((pet) => {
-            console.log(`${pet.nome} foi adicionado com sucesso!`);
-        })
+    adicionarPets: (...novospets) => {
+        let textoAddPets = "Adicionando PET";
+        novospets.forEach((novopet) => {
+          bancoDados.pets.push(novopet);
+        });
+
+        novospets.forEach((pet) => {
+            textoAddPets += (`${pet.nome} foi adicionado com sucesso!`);
+        });
     },
     darBanhoPet: pet => {
         pet.servicos.push({
@@ -140,6 +142,6 @@ const petshop =  {
 
 
 
-
+//importante pra consegui usar esse arquivo
 module.exports = petshop;
  
