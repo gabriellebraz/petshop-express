@@ -112,6 +112,17 @@
       "contato": "(11) 99999-9999",
       "vacinado": true,
       "servicos": []
+    },
+    {
+      "nome": "gaby",
+      "tipo": "largato",
+      "idade": 3,
+      "raca": "American",
+      "peso": 28,
+      "tutor": "Doug",
+      "contato": "(11) 99999-9999",
+      "vacinado": false,
+      "servicos": []
     }
   ]
 }
